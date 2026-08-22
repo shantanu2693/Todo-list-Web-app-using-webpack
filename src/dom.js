@@ -1,12 +1,13 @@
 import plus from './svg/plus.svg';
 import { Project } from './project.js';
-export { initializeDOM, initializeDefaultProject , renderTodoDialog };
+export { initializeTodoListDOM, renderProjectDialog, initializeProjectListDOM };
 
-function initializeDOM() {
+
+function initializeTodoListDOM() {
     const todoList = document.querySelector('.todo-list');
     todoList.innerHTML = '';
 
-    const div = document.createElement('div');
+    const addTodoDiv = document.createElement('div');
 
     const addPlusSVG = document.createElement('img');
     addPlusSVG.src = plus;
@@ -21,9 +22,35 @@ function initializeDOM() {
         renderTodoDialog();
     });
     
-    div.appendChild(addPlusSVG);
-    div.appendChild(addToDoItemButton);
-    todoList.appendChild(div);
+    addTodoDiv.appendChild(addPlusSVG);
+    addTodoDiv.appendChild(addToDoItemButton);
+    todoList.appendChild(addTodoDiv);
+}
+
+function initializeProjectListDOM() {
+    const addProjectContainer = document.querySelector('.add-project');
+    addProjectContainer.innerHTML = '';
+
+    initializeDefaultProject();
+    
+    const addProjectDiv = document.createElement('div');
+
+    const addPlusSVG2 = document.createElement('img');
+    addPlusSVG2.src = plus;
+    addPlusSVG2.alt = 'Add Project';
+    addPlusSVG2.width = 12;
+    addPlusSVG2.height = 12;
+
+    const addProjectButton = document.createElement('button');
+    addProjectButton.textContent = 'Add Project';
+    addProjectButton.className = 'addProjectButton';
+    addProjectButton.addEventListener('click', () => {
+        renderProjectDialog();
+    });
+
+    addProjectDiv.appendChild(addPlusSVG2);
+    addProjectDiv.appendChild(addProjectButton);
+    addProjectContainer.appendChild(addProjectDiv);
 }
 
 function initializeDefaultProject() {
@@ -48,6 +75,24 @@ function renderTodoDialog() {
         const dueDate = form.querySelector('#dueDate').value;
         const priority = form.querySelector('#priority').value;
         addTodoItem(todo, description, dueDate, priority);
+        dialog.close();
+    });
+    
+    const cancelBtn = dialog.querySelector('#cancel-btn');
+    cancelBtn.addEventListener('click', () => {
+        dialog.close();
+    });
+}
+
+function renderProjectDialog() {
+    const dialog = document.getElementById('project-dialog');
+    dialog.showModal();
+
+    const form = dialog.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const project = form.querySelector('#project').value;
+        addProject(project);
         dialog.close();
     });
     

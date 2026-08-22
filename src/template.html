@@ -17,8 +17,7 @@
                     
                 </ol>
                 <div class="add-project">
-                    <img src="./svg/plus.svg" alt="Add Project" width="12" height="12">
-                    <button>Add Project</button>
+
                 </div>
             </div>
             <div class="footer">
@@ -56,6 +55,15 @@
                 <option value="high">High</option>
             </select>
 
+            <button type="submit">Add</button>
+            <button type="button" id="cancel-btn">Cancel</button>
+        </form>
+    </dialog>
+
+    <dialog id="project-dialog">
+        <form method="post">
+            <label for="project">Name:</label>
+            <input type="text" name="project" id="project" placeholder="Enter Project" required>
             <button type="submit">Add</button>
             <button type="button" id="cancel-btn">Cancel</button>
         </form>

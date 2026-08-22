@@ -52,7 +52,7 @@ ol {
     background-color: white;
 }
 
-.add-project > button {
+.addProjectButton {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -81,7 +81,7 @@ ol {
     text-decoration: underline;
 }
 
-#todo-dialog {
+dialog {
     position: fixed;
     top: 50%;
     left: 50%;

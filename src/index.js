@@ -1,10 +1,12 @@
 import './styles.css';
 import { Project } from './project';
 import { ToDoItem } from './todo';
-import { initializeDOM, initializeDefaultProject, renderTodoDialog } from './dom';
+import { initializeTodoListDOM, renderProjectDialog, initializeProjectListDOM } from './dom';
 
-initializeDOM();
-initializeDefaultProject();
+initializeTodoListDOM();
+initializeProjectListDOM();
+renderProjectDialog();
+
 
 
 
