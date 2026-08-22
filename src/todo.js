@@ -1,19 +1,14 @@
-class ToDoItem {
+export class ToDoItem {
     constructor(title, description, dueDate, priority, checkList) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.checkList = checkList;
         this.id = crypto.randomUUID();
     }
 
     addCheckList(checkListItem) {
         this.checkList.push(checkListItem);
-    }
-
-    removeCheckList(checkListItem) {
-        this.checkList.splice(this.checkList.indexOf(checkListItem), 1);
     }
 
     updateTitle(title) {

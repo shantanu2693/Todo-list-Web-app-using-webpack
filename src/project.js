@@ -1,4 +1,4 @@
-class Project {
+export class Project {
     constructor(name) {
         this.name = name;
         this.toDoItems = {};
@@ -10,5 +10,13 @@ class Project {
 
     removeToDoItem(toDoItem) {
         delete this.toDoItems[toDoItem.id];
+    }
+
+    getProjectName() {
+        return this.name;
+    }
+    
+    getToDoItems() {
+        return this.toDoItems;
     }
 }
